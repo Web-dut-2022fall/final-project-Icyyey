@@ -1,0 +1,80 @@
+{% extends "saloninventory/layout.html" %} {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  
+  {% block body %}
+  <style>
+    * {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Float four columns side by side */
+.column {
+  float: center;
+  width: 48%;
+  padding: 10px;
+  margin: 5px;
+}
+
+/* Remove extra left and right margins, due to padding */
+.row {margin: auto;}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: flex;
+  clear: both;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+/* Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  display: flex;
+   flex-wrap: wrap;
+   justify-content: space-between;
+  text-align: center;
+}
+    </style>
+    <div class="row justify-content-center" style="text-align: center;">
+  <div
+        class="card border-success column"
+        >
+    
+  <div id="cartproduct-view" class="header">
+    
+    <label for="products" style="text-align: center; margin: auto"><br>Select a product:<br></label>
+    <select name="products" id="products" class="btn btn-light" onchange="pchange()"></select><br>
+  <div id="prodBody"></div>
+  <div id="pfoot" class="footer"></div>
+  </div></div><br>
+  <div
+        class="card border-success column"
+        >
+  <div id="cartservice-view" class="header">
+    <label for="services" style="text-align: center; margin: auto"><br>Select a service:<br></label>
+    <select name="services" id="services" class="btn btn-light" onchange="schange()"></select><br>
+    <div id="servBody"></div>
+  <div id="sfoot" class="footer"></div>
+  </div></div></div>
+  
+  </div>
+  {% block script %}
+  <script
+    type="text/javascript"
+    src="{% static 'saloninventory/inventory.js' %}"
+  ></script>
+  {% endblock %} {% endblock %}
+</html>
